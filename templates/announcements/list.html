@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Announcements{% endblock %}
+{% block content %}
+
+<h2 style="text-align: center;">Announcements</h2>
+
+{% if announcements %}
+  <ul class="ann-list">
+    {% for a in announcements %}
+      <li style="text-align: center;"><a href="/announcements/{{ a.id }}/">{{ a.title }}</a> <small>— {{ a.created_at|date:'M j, Y' }}</small></li>
+    {% endfor %}
+    <button onclick="window.history.back();" style="margin-top: 20px;">← Back</button>
+  </ul>
+{% else %}
+  <p>No announcements yet. Add some via the admin panel.</p>
+{% endif %}
+{% endblock %}
